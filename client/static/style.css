@@ -1,0 +1,55 @@
+/* GRB_Technology Virtual Try-On Stylesheet */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0d0d0d; --surface: #161616; --card: #1e1e1e;
+  --border: #2a2a2a; --accent: #00e5a0; --accent2: #7c3aed;
+  --text: #f0f0f0; --muted: #888; --radius: 12px;
+}
+
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; display: flex; flex-direction: column; }
+
+header { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2rem; border-bottom: 1px solid var(--border); background: var(--surface); }
+.logo { display: flex; align-items: center; gap: .8rem; }
+.logo-icon { font-size: 2rem; }
+header h1 { font-size: 1.4rem; font-weight: 700; }
+.tagline { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; }
+.badge { background: rgba(0,229,160,.1); border: 1px solid var(--accent); color: var(--accent); border-radius: 20px; padding: .3rem .9rem; font-size: .8rem; }
+
+main { flex: 1; padding: 2rem; max-width: 1100px; margin: 0 auto; width: 100%; }
+
+.alert { padding: .9rem 1.2rem; border-radius: var(--radius); margin-bottom: 1.5rem; }
+.alert.error { background: rgba(239,68,68,.15); border: 1px solid #ef4444; color: #fca5a5; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+.card-label { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+
+.upload-zone { display: flex; align-items: center; justify-content: center; border: 2px dashed var(--border); border-radius: 10px; min-height: 200px; cursor: pointer; transition: border-color .2s, background .2s; position: relative; overflow: hidden; }
+.upload-zone:hover { border-color: var(--accent); background: rgba(0,229,160,.04); }
+.upload-zone input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.upload-inner { text-align: center; color: var(--muted); font-size: 1rem; padding: 1rem; width: 100%; }
+.upload-zone img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
+
+.status { font-size: .82rem; color: var(--accent); }
+.steps { padding-left: 1.2rem; color: var(--muted); font-size: .9rem; display: flex; flex-direction: column; gap: .4rem; }
+.hint { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+
+.btn-primary { width: 100%; padding: .85rem; background: var(--accent); color: #000; font-weight: 700; font-size: 1rem; border: none; border-radius: 8px; cursor: pointer; transition: opacity .2s; }
+.btn-primary:hover { opacity: .85; }
+.btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+
+.btn-secondary { display: block; text-align: center; padding: .7rem; border: 1px solid var(--border); border-radius: 8px; color: var(--text); text-decoration: none; font-size: .9rem; transition: border-color .2s; }
+.btn-secondary:hover { border-color: var(--accent); }
+
+.result-section { margin-top: 2rem; text-align: center; }
+.result-section h2 { margin-bottom: 1.2rem; }
+.result-wrap { display: inline-block; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 1rem; }
+.result-img { max-width: 400px; display: block; }
+
+.btn-download { display: inline-block; padding: .75rem 1.5rem; background: var(--accent2); color: white; border-radius: 8px; text-decoration: none; font-weight: 600; transition: opacity .2s; }
+.btn-download:hover { opacity: .85; }
+
+footer { text-align: center; padding: 1rem; font-size: .8rem; color: var(--muted); border-top: 1px solid var(--border); }
+footer a { color: var(--accent); text-decoration: none; }
