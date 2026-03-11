@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GRB_Technology — Virtual Try-On</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <span class="logo-icon">👗</span>
+      <div>
+        <h1>GRB_Technology</h1>
+        <p class="tagline">Virtual Clothing Try-On</p>
+      </div>
+    </div>
+    <span class="badge">⚡ Powered by ViTON AI</span>
+  </header>
+
+  <main>
+    {% if error %}
+    <div class="alert error">⚠️ {{ error }}</div>
+    {% endif %}
+
+    <form action="/tryon" method="POST" enctype="multipart/form-data" id="tryon-form">
+      <div class="cards">
+
+        <!-- Step 1: Person Photo -->
+        <div class="card">
+          <div class="card-label">01 — YOUR PHOTO</div>
+          <label class="upload-zone" for="person-input">
+            <div class="upload-inner" id="person-inner">
+              <span id="person-placeholder">🤳<br/><small>Full-body photo works best</small></span>
+              <img id="person-preview" src="" alt="" style="display:none" />
+            </div>
+            <input type="file" id="person-input" name="person" accept="image/*" required />
+          </label>
+          <p class="status" id="person-status"></p>
+        </div>
+
+        <!-- Step 2: Clothing -->
+        <div class="card">
+          <div class="card-label">02 — CLOTHING ITEM</div>
+          <label class="upload-zone" for="cloth-input">
+            <div class="upload-inner" id="cloth-inner">
+              <span id="cloth-placeholder">👕<br/><small>T-shirt, dress, jacket...</small></span>
+              <img id="cloth-preview" src="" alt="" style="display:none" />
+            </div>
+            <input type="file" id="cloth-input" name="cloth" accept="image/*" required />
+          </label>
+          <p class="status" id="cloth-status"></p>
+        </div>
+
+        <!-- Step 3: Generate -->
+        <div class="card" id="gen-card">
+          <div class="card-label">03 — GENERATE</div>
+          <ol class="steps">
+            <li>Upload your full-body photo</li>
+            <li>Upload a clothing item</li>
+            <li>Click <strong>Try It On!</strong></li>
+          </ol>
+          <p class="hint">ViTON warps the garment to your body shape and composites a realistic result.</p>
+          <button type="submit" class="btn-primary" id="submit-btn">✨ Try It On!</button>
+          <a href="/" class="btn-secondary">🔄 Reset</a>
+        </div>
+      </div>
+    </form>
+
+    {% if result %}
+    <section class="result-section">
+      <h2>✅ Your Try-On Result</h2>
+      <div class="result-wrap">
+        <img src="data:image/png;base64,{{ result }}" alt="Try-On Result" class="result-img" />
+      </div>
+      <a class="btn-download" href="data:image/png;base64,{{ result }}" download="grb_tryon_result.png">
+        ⬇️ Download Result
+      </a>
+    </section>
+    {% endif %}
+  </main>
+
+  <footer>
+    Built with ❤️ by GRB_Technology &nbsp;·&nbsp; Powered by ViTON &nbsp;·&nbsp;
+    <a href="https://github.com/PM2003/GRB_Technology" target="_blank">GitHub</a>
+  </footer>
+
+  <script src="/static/main.js"></script>
+</body>
+</html>
